@@ -32,6 +32,11 @@ class Game {
     this.firstMove = false;
     this.initControls();
     this.getState();
+    this.previousBoard = this.board;
+  }
+
+  hasBoardChanged() {
+    return this.board !== this.previousBoard;
   }
 
   initControls() {
@@ -66,19 +71,22 @@ class Game {
       }
       this.board[row] = newRow;
     }
-    this.addNewTile();
-    this.getState();
-    this.checkFirstMove();
-    this.getScore();
 
-    const gameStatus = this.getStatus();
-    const messageWin = document.querySelector('.message-win');
-    const messageLose = document.querySelector('.message-lose');
+    if (this.hasBoardChanged()) {
+      this.addNewTile();
+      this.getState();
+      this.checkFirstMove();
+      this.getScore();
 
-    if (gameStatus === 'win') {
-      messageWin.classList.remove('hidden');
-    } else if (gameStatus === 'lose') {
-      messageLose.classList.remove('hidden');
+      const gameStatus = this.getStatus();
+      const messageWin = document.querySelector('.message-win');
+      const messageLose = document.querySelector('.message-lose');
+
+      if (gameStatus === 'win') {
+        messageWin.classList.remove('hidden');
+      } else if (gameStatus === 'lose') {
+        messageLose.classList.remove('hidden');
+      }
     }
   }
   moveRight() {
@@ -98,19 +106,22 @@ class Game {
       }
       this.board[row] = newRow;
     }
-    this.addNewTile();
-    this.getState();
-    this.checkFirstMove();
-    this.getScore();
 
-    const gameStatus = this.getStatus();
-    const messageWin = document.querySelector('.message-win');
-    const messageLose = document.querySelector('.message-lose');
+    if (this.hasBoardChanged()) {
+      this.addNewTile();
+      this.getState();
+      this.checkFirstMove();
+      this.getScore();
 
-    if (gameStatus === 'win') {
-      messageWin.classList.remove('hidden');
-    } else if (gameStatus === 'lose') {
-      messageLose.classList.remove('hidden');
+      const gameStatus = this.getStatus();
+      const messageWin = document.querySelector('.message-win');
+      const messageLose = document.querySelector('.message-lose');
+
+      if (gameStatus === 'win') {
+        messageWin.classList.remove('hidden');
+      } else if (gameStatus === 'lose') {
+        messageLose.classList.remove('hidden');
+      }
     }
   }
   moveUp() {
@@ -139,19 +150,22 @@ class Game {
         this.board[row][col] = newCol[row];
       }
     }
-    this.addNewTile();
-    this.getState();
-    this.checkFirstMove();
-    this.getScore();
 
-    const gameStatus = this.getStatus();
-    const messageWin = document.querySelector('.message-win');
-    const messageLose = document.querySelector('.message-lose');
+    if (this.hasBoardChanged()) {
+      this.addNewTile();
+      this.getState();
+      this.checkFirstMove();
+      this.getScore();
 
-    if (gameStatus === 'win') {
-      messageWin.classList.remove('hidden');
-    } else if (gameStatus === 'lose') {
-      messageLose.classList.remove('hidden');
+      const gameStatus = this.getStatus();
+      const messageWin = document.querySelector('.message-win');
+      const messageLose = document.querySelector('.message-lose');
+
+      if (gameStatus === 'win') {
+        messageWin.classList.remove('hidden');
+      } else if (gameStatus === 'lose') {
+        messageLose.classList.remove('hidden');
+      }
     }
   }
   moveDown() {
@@ -180,19 +194,22 @@ class Game {
         this.board[row][col] = newCol[row];
       }
     }
-    this.addNewTile();
-    this.getState();
-    this.checkFirstMove();
-    this.getScore();
 
-    const gameStatus = this.getStatus();
-    const messageWin = document.querySelector('.message-win');
-    const messageLose = document.querySelector('.message-lose');
+    if (this.hasBoardChanged()) {
+      this.addNewTile();
+      this.getState();
+      this.checkFirstMove();
+      this.getScore();
 
-    if (gameStatus === 'win') {
-      messageWin.classList.remove('hidden');
-    } else if (gameStatus === 'lose') {
-      messageLose.classList.remove('hidden');
+      const gameStatus = this.getStatus();
+      const messageWin = document.querySelector('.message-win');
+      const messageLose = document.querySelector('.message-lose');
+
+      if (gameStatus === 'win') {
+        messageWin.classList.remove('hidden');
+      } else if (gameStatus === 'lose') {
+        messageLose.classList.remove('hidden');
+      }
     }
   }
 
