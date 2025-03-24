@@ -310,9 +310,9 @@ class Game {
       [0, 0, 0, 0],
       [0, 0, 0, 0],
     ];
+
     this.addNewTile();
     this.addNewTile();
-    this.previousBoard = JSON.parse(JSON.stringify(this.board));
     this.getState();
 
     const messageWin = document.querySelector('.message-win');
@@ -345,8 +345,11 @@ class Game {
       const value = Math.random() < 0.9 ? 2 : 4;
 
       this.board[randomCell.row][randomCell.col] = value;
-      this.previousBoard = JSON.parse(JSON.stringify(this.board));
-      this.getState();
+
+      if (this.hasBoardChanged()) {
+        this.previousBoard = JSON.parse(JSON.stringify(this.board));
+        this.getState();
+      }
     }
   }
 
