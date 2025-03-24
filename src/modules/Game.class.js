@@ -30,13 +30,13 @@ class Game {
   ) {
     this.board = initialState;
     this.firstMove = false;
+    this.previousBoard = JSON.parse(JSON.stringify(this.board));
     this.initControls();
     this.getState();
-    this.previousBoard = this.board;
   }
 
   hasBoardChanged() {
-    return this.board !== this.previousBoard;
+    return JSON.stringify(this.board) !== JSON.stringify(this.previousBoard);
   }
 
   initControls() {
@@ -73,6 +73,7 @@ class Game {
     }
 
     if (this.hasBoardChanged()) {
+      this.previousBoard = JSON.parse(JSON.stringify(this.board));
       this.addNewTile();
       this.getState();
       this.checkFirstMove();
@@ -108,6 +109,7 @@ class Game {
     }
 
     if (this.hasBoardChanged()) {
+      this.previousBoard = JSON.parse(JSON.stringify(this.board));
       this.addNewTile();
       this.getState();
       this.checkFirstMove();
@@ -152,6 +154,7 @@ class Game {
     }
 
     if (this.hasBoardChanged()) {
+      this.previousBoard = JSON.parse(JSON.stringify(this.board));
       this.addNewTile();
       this.getState();
       this.checkFirstMove();
@@ -196,6 +199,7 @@ class Game {
     }
 
     if (this.hasBoardChanged()) {
+      this.previousBoard = JSON.parse(JSON.stringify(this.board));
       this.addNewTile();
       this.getState();
       this.checkFirstMove();
@@ -271,7 +275,7 @@ class Game {
    * `lose` - the game is lost
    */
   getStatus() {
-    const win = this.board.some((row) => row.includes('2048'));
+    const win = this.board.some((row) => row.includes(2048));
     const lose = !this.board.some((row) => row.includes(0)) && !this.canMerge();
 
     if (win) {
@@ -308,6 +312,7 @@ class Game {
     ];
     this.addNewTile();
     this.addNewTile();
+    this.previousBoard = JSON.parse(JSON.stringify(this.board));
     this.getState();
 
     const messageWin = document.querySelector('.message-win');
@@ -340,6 +345,7 @@ class Game {
       const value = Math.random() < 0.9 ? 2 : 4;
 
       this.board[randomCell.row][randomCell.col] = value;
+      this.previousBoard = JSON.parse(JSON.stringify(this.board));
       this.getState();
     }
   }
